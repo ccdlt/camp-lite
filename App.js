@@ -2,10 +2,11 @@ import { StatusBar } from 'expo-status-bar';
 import { CampsiteContext } from './context/CampsiteContext';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, ImageBackground } from 'react-native';
-import CampSite from './components/CampSite';
+import Search from './components/Search';
 import NavBar from './components/NavBar';
 import Example from './components/DummyData';
 import * as Font from 'expo-font';
+// import S from './components/test';
 
 
 
@@ -14,25 +15,25 @@ export default function App() {
   console.log(site)
 
 
-  const getCampgrounds = async () => {
-    try {
-      const res = await fetch('', {
-        method: 'GET',
-        headers: {
-          Authorization: '5uugqjgh2na7ryetcs8kmqra',
-        }
-      });
-      const json = await response.json();
-      console.log(json)
-    } catch (error) {
-      console.log('That dun work', error);
-    }
-  };
+  // const getCampgrounds = async () => {
+  //   try {
+  //     const res = await fetch('', {
+  //       method: 'GET',
+  //       headers: {
+  //         Authorization: '5uugqjgh2na7ryetcs8kmqra',
+  //       }
+  //     });
+  //     const json = await response.json();
+  //     console.log(json)
+  //   } catch (error) {
+  //     console.log('That dun work', error);
+  //   }
+  // };
 
 
-  useEffect(() => {
-    getCampgrounds();
-  });
+  // useEffect(() => {
+  //   getCampgrounds();
+  // });
 
 
   return (
@@ -40,19 +41,17 @@ export default function App() {
       <ImageBackground source={require('./bbg.jpg')} style={styles.image}>
           <View style={styles.container}>
             {/* <Example /> */}
-            <Text style={styles.title}>HELLO WORLD</Text>
+            <Text style={styles.title}>CampLite</Text>
             <NavBar />
             <StatusBar style="auto" />
-            <CampSite />
-            <CampSite />
-            <CampSite />
+            <Search />
           </View>
         </ImageBackground>
     // </CampsiteContext.Provider>
   );
 }
 
-const titles = require('./assets/fonts/VastShadow-Regular.ttf')
+// const titles = require('./assets/fonts/VastShadow-Regular.ttf')
 
 const styles = StyleSheet.create({
   container: {
@@ -69,7 +68,7 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   title: {
-    fontFamily: titles,
+    // fontFamily: require('./assets/fonts/VastShadow-Regular.ttf'),
     color: 'black',
     fontSize: 96,
   }
