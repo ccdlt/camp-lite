@@ -15,20 +15,7 @@ export default function App() {
   console.log(site)
 
 
-  // const getCampgrounds = async () => {
-  //   try {
-  //     const res = await fetch('', {
-  //       method: 'GET',
-  //       headers: {
-  //         Authorization: '5uugqjgh2na7ryetcs8kmqra',
-  //       }
-  //     });
-  //     const json = await response.json();
-  //     console.log(json)
-  //   } catch (error) {
-  //     console.log('That dun work', error);
-  //   }
-  // };
+
 
 
   // useEffect(() => {
