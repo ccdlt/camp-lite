@@ -5,6 +5,7 @@ import SelectDropdown from 'react-native-select-dropdown';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { View, Text, StyleSheet, SafeAreaView, TextInput, ScrollView, Button } from 'react-native';
 const apiKey = require('../config.js');
+import axios from 'axios';
 
 const Search = () => {
   const [state, setState] = useState('');
@@ -29,29 +30,19 @@ const Search = () => {
 
   const amenityCode = [null, 4001, 4002, 4003, 4004, 4005, 4006, 4007, 4008, 4009, 4010, 4011, 4012, 4013];
 
-  const handleOnPress = async () => {
-    let url;
-    if (state && amenity) {
-      url = `http://api.amp.active.com/camping/campgrounds/?pstate=${state}&amenity=${amenity}&api_key=${apiKey.api}`;
-    } else {
-      url = `http://api.amp.active.com/camping/campgrounds/?pstate=${state}&api_key=${apiKey.api}`
-    }
-
-    try {
-      const res = await fetch(url, {
-        method: 'GET',
-        headers: {
-          Accept: '*/*',
-          'Access-Control-Allow-Origin': '*',
-          'User-Agent': 'http://localhost:19006',
-        }
-      });
-      const json = await response.json();
-      console.log(json)
-    } catch (error) {
-      console.log('That dun work', error);
-    }
-
+  const handleOnPress = () => {
+    // let url;
+    // if (state && amenity) {
+    //   url = `http://api.amp.active.com/camping/campgrounds/?pstate=${state}&amenity=${amenity}&api_key=${apiKey.api}`;
+    // } else {
+    //   url = `http://api.amp.active.com/camping/campgrounds/?pstate=${state}&api_key=${apiKey.api}`
+    // }
+    const data = {state: state, amenity: amenity};
+    axios.post(`http://10.0.0.18:3000/camping/campgrounds/`, {
+      data: data,
+    })
+    .then((data) => console.log('IVE ARRIVED', data))
+    .catch((err) => console.log('axios error', err))
   }
 
   console.log('state', state)
@@ -73,7 +64,7 @@ const Search = () => {
             }}>
             {states.map((item, index) => {
               // console.log(item, stateCode[index])
-              return <Picker.Item label={item} value={stateCode[index]} />
+              return <Picker.Item label={item} value={stateCode[index]} key={stateCode[index]}/>
             })}
           </Picker>
           <Picker
@@ -86,7 +77,7 @@ const Search = () => {
             }}>
             {amenities.map((item, index) => {
               // console.log(item, amenityCode[index])
-              return <Picker.Item label={item} value={amenityCode[index]} />
+              return <Picker.Item label={item} value={amenityCode[index]} key={amenityCode[index]}/>
             })}
           </Picker>
           <Button
