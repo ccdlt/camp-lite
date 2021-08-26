@@ -1,41 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
-import { CampsiteContext } from './context/CampsiteContext';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, ScrollView, ImageBackground, Dimensions, View } from 'react-native';
 import Search from './components/Search';
-import NavBar from './components/NavBar';
-import Example from './components/DummyData';
-import * as Font from 'expo-font';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { NavigationContainer } from '@react-navigation/native';
+import NavBar from './components/NavBar'; //To Be Implemented
+import { NavigationContainer } from '@react-navigation/native'; //To Be Implemented
 
 
 
 export default function App() {
   const [site, setSite] = useState({});
-  const campIcon = <Icon name='map-marked' size={30} color="black" />;
-
-
 
   return (
-    // <CampsiteContext.Provider value={[site, setSite]}>
     <NavigationContainer>
       <View style={styles.container}>
         <View style={styles.bgcontainer}>
-          <ImageBackground source={require('./bbg.jpg')} style={styles.image}>
-
-              <Text style={styles.title}>CampLite</Text>
-              <StatusBar style="auto" />
+          <ImageBackground source={require('./bbg.png')} style={styles.image} >
+            <Text style={styles.title}>CampLite</Text>
+            <StatusBar style="auto" />
+            <ScrollView>
               <Search />
+            </ScrollView>
           </ImageBackground>
           </View>
         </View>
       </NavigationContainer>
-    // </CampsiteContext.Provider>
   );
 }
-
-// const titles = require('./assets/fonts/VastShadow-Regular.ttf')
 
 const styles = StyleSheet.create({
   container: {
@@ -58,7 +48,6 @@ const styles = StyleSheet.create({
     color: 'beige',
     fontSize: 70,
     paddingTop: '22%',
-    shadowColor: 'grey',
   },
   bgcontainer: {
     flex: 1,

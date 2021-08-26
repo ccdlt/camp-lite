@@ -27,6 +27,5 @@ module.exports = {
       })
       .catch((err) => console.log('err in controller', err))
   }
-//X-Originating-IP: 98.37.152.202
 }
 

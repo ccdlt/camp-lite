@@ -1,11 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Picker } from '@react-native-picker/picker';
-import CampsiteContext from '../context/CampsiteContext';
 import CampSite from './CampSite';
 import SelectDropdown from 'react-native-select-dropdown';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { View, Text, StyleSheet, SafeAreaView, TextInput, ScrollView, Button } from 'react-native';
-const apiKey = require('../config.js');
 import axios from 'axios';
 
 const Search = () => {
@@ -13,8 +10,6 @@ const Search = () => {
   const [amenity, setAmenity] = useState('');
   const [visible, setVisible] = useState(false);
   const [camps, setCamps] = useState([]);
-
-
 
   const states = ['Select State','Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Lousiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
 
@@ -27,6 +22,7 @@ const Search = () => {
   const handleOnPress = () => {
     const dataArray = [];
     const data = {state: state, amenity: amenity};
+
     axios.post(`http://10.0.0.18:3000/camping/campgrounds/`, {
       data: data,
     })
