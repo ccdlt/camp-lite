@@ -1,39 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
 import { CampsiteContext } from './context/CampsiteContext';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { StyleSheet, Text, ScrollView, ImageBackground, Dimensions, View } from 'react-native';
 import Search from './components/Search';
 import NavBar from './components/NavBar';
 import Example from './components/DummyData';
 import * as Font from 'expo-font';
-// import S from './components/test';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 
 export default function App() {
   const [site, setSite] = useState({});
-  console.log(site)
+  const campIcon = <Icon name='map-marked' size={30} color="black" />;
 
-
-
-
-
-  // useEffect(() => {
-  //   getCampgrounds();
-  // });
 
 
   return (
     // <CampsiteContext.Provider value={[site, setSite]}>
-      <ImageBackground source={require('./bbg.jpg')} style={styles.image}>
-          <View style={styles.container}>
-            {/* <Example /> */}
-            <Text style={styles.title}>CampLite</Text>
-            <NavBar />
-            <StatusBar style="auto" />
-            <Search />
+    <NavigationContainer>
+      <View style={styles.container}>
+        <View style={styles.bgcontainer}>
+          <ImageBackground source={require('./bbg.jpg')} style={styles.image}>
+
+              <Text style={styles.title}>CampLite</Text>
+              <StatusBar style="auto" />
+              <Search />
+          </ImageBackground>
           </View>
-        </ImageBackground>
+        </View>
+      </NavigationContainer>
     // </CampsiteContext.Provider>
   );
 }
@@ -46,18 +43,30 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 20,
-    margin: 10,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+    backgroundColor: 'transparent',
   },
   image: {
     flex: 1,
-    justifyContent: 'center',
-    resizeMode: 'cover',
+    width: null,
+    height: null
   },
   title: {
-    // fontFamily: require('./assets/fonts/VastShadow-Regular.ttf'),
-    color: 'black',
-    fontSize: 96,
+    fontFamily: 'Verdana-Bold',
+    textAlign: 'center',
+    color: 'beige',
+    fontSize: 70,
+    paddingTop: '22%',
+    shadowColor: 'grey',
+  },
+  bgcontainer: {
+    flex: 1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
   }
 
 });
