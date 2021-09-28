@@ -2,7 +2,7 @@
  A mobile application for searching and reserving campgrounds throughout the US and CA. A user can search for campgrounds by state and amenity or just by state.
  
 # Authors
-@ccdlt
+@ccdlt - Sierra Wendt
 
 # Tech Stack
 Client: React Native, styled-components, raw CSS
